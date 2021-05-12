@@ -10,7 +10,7 @@ class userServices {
   login = (email, password) =>
     new Promise((resolve, reject) => {
       axios
-        .post("http://localhost:8080/users/login", {
+        .post("https://new-backend-api.herokuapp.com/users/login", {
           email,
           password,
         })
