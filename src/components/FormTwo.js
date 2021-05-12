@@ -92,10 +92,46 @@ const ProductTable = (props) => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort("Email")}
-              className={getClassNamesFor("Email")}
+              onClick={() => requestSort("firstName")}
+              className={getClassNamesFor("firstName")}
+            >
+              First Name
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("lastName")}
+              className={getClassNamesFor("lastName")}
+            >
+              Last Name
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("email")}
+              className={getClassNamesFor("email")}
             >
               Email
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("StepTwo")}
+              className={getClassNamesFor("StepTwo")}
+            >
+              StepTwo
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("StepThree")}
+              className={getClassNamesFor("StepThree")}
+            >
+              StepThree
             </button>
           </th>
           <th>
@@ -146,53 +182,62 @@ const ProductTable = (props) => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort("PLZ")}
-              className={getClassNamesFor("PLZ")}
+              onClick={() => requestSort("StepNine")}
+              className={getClassNamesFor("StepNine")}
             >
-              PLZ
+              StepNine
             </button>
           </th>
           <th>
             <button
               type="button"
-              onClick={() => requestSort("ORT")}
-              className={getClassNamesFor("ORT")}
+              onClick={() => requestSort("StepTen")}
+              className={getClassNamesFor("StepTen")}
             >
-              ORT
+              StepTen
             </button>
           </th>
           <th>
             <button
               type="button"
-              onClick={() => requestSort("Straße")}
-              className={getClassNamesFor("Straße")}
+              onClick={() => requestSort("address")}
+              className={getClassNamesFor("address")}
             >
-              Straße
+              Address
             </button>
           </th>
           <th>
             <button
               type="button"
-              onClick={() => requestSort("Nachname")}
-              className={getClassNamesFor("Nachname")}
+              onClick={() => requestSort("postcode")}
+              className={getClassNamesFor("postcode")}
             >
-              Nachname
+              Postcode
             </button>
           </th>
           <th>
             <button
               type="button"
-              onClick={() => requestSort("Telefon")}
-              className={getClassNamesFor("Telefon")}
+              onClick={() => requestSort("place")}
+              className={getClassNamesFor("place")}
             >
-              Telefon
+              Place
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("phone")}
+              className={getClassNamesFor("phone")}
+            >
+              Phone
             </button>
           </th>
           <th>
             <button type="button">Note</button>
           </th>
           <th>
-            <button type="button">Option</button>
+            <button type="button">Ja/Nein</button>
           </th>
         </tr>
       </thead>
@@ -203,17 +248,22 @@ const ProductTable = (props) => {
             <td>{item.Day}</td>
             <td>{item.Month}</td>
             <td>{item.Year}</td>
-            <td>{item.Email}</td>
+            <td>{item.firstName}</td>
+            <td>{item.lastName}</td>
+            <td>{item.email}</td>
+            <td>{item.StepTwo}</td>
+            <td>{item.StepThree}</td>
             <td>{item.StepFour}</td>
             <td>{item.StepFive}</td>
             <td>{item.StepSix}</td>
             <td>{item.StepSeven}</td>
             <td>{item.StepEight}</td>
-            <td>{item.PLZ}</td>
-            <td>{item.ORT}</td>
-            <td>{item.Straße}</td>
-            <td>{item.Nachname}</td>
-            <td>{item.Telefon}</td>
+            <td>{item.StepNine}</td>
+            <td>{item.StepTen}</td>
+            <td>{item.address}</td>
+            <td>{item.postcode}</td>
+            <td>{item.place}</td>
+            <td>{item.phone}</td>
 
             <td>
               <input
@@ -226,7 +276,7 @@ const ProductTable = (props) => {
                 type="submit"
                 onClick={async () => {
                   await axios.put(
-                    `https://new-backend-api.herokuapp.com/zinking/create-form-edit/${item._id}`,
+                    `https://new-backend-api.herokuapp.com/create-form-edit/${item._id}`,
                     { Note: input }
                   );
                   console.log(input);
@@ -246,7 +296,7 @@ const ProductTable = (props) => {
                 type="submit"
                 onClick={async () => {
                   await axios.put(
-                    `https://new-backend-api.herokuapp.com/zinking/create-form-edit/${item._id}`,
+                    `https://new-backend-api.herokuapp.com/create-form-edit/${item._id}`,
                     { Option: option }
                   );
                   console.log(option);
@@ -267,13 +317,13 @@ const data = async () => {
 };
 console.log(data);
 
-export default function Form() {
+export default function FormTwo() {
   const [formData, setFormData] = React.useState([{}]);
 
   useEffect(() => {
     // GET request using axios inside useEffect React hook
     let data = axios
-      .get("https://new-backend-api.herokuapp.com/zinking/get-data")
+      .get("https://new-backend-api.herokuapp.com/")
       .then((response) => setFormData(response.data));
     console.log(formData);
 
@@ -282,7 +332,7 @@ export default function Form() {
   return (
     <Auth>
       <div className="App">
-        <h3 style={{ textAlign: "center" }}>Zahnzusatz</h3>
+        <h3 style={{ textAlign: "center" }}>Baufinanzierung</h3>
         <ProductTable products={formData} />
       </div>
     </Auth>

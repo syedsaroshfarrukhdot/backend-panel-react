@@ -14,18 +14,16 @@ const MainView = (props) => {
 
       {userService.isLoggedIn() ? (
         <>
+          <Header />
           <Switch>
             {appRoutes.map((route, i) => {
               return (
-                <>
-                  <Header />
-                  <Route
-                    key={route.path}
-                    exact={route.exact}
-                    path={route.path}
-                    component={route.component}
-                  />
-                </>
+                <Route
+                  key={route.path}
+                  exact={route.exact}
+                  path={route.path}
+                  component={route.component}
+                />
               );
             })}
           </Switch>
