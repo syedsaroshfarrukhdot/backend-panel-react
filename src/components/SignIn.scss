@@ -1,0 +1,41 @@
+.SignIn {
+  margin: 0%;
+
+  .box {
+    width: 500px !important;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .card {
+    background: var(--color-secondary);
+  }
+  .image {
+    display: block;
+    margin-left: 75px;
+    margin-right: auto;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .text {
+    color: var(--color-white);
+  }
+
+  .signin-btn {
+    button {
+      background: orange;
+      color: var(--color-white);
+      border: none;
+      width: 100%;
+      font-weight: 600;
+      font-size: 20px;
+      text-align: center;
+      padding-bottom: 4rem;
+      line-height: 60px;
+      height: 20px;
+    }
+  }
+  .link {
+    color: var(--color-white);
+  }
+}
