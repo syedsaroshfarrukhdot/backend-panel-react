@@ -1,5 +1,12 @@
 import React from "react";
-import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+  NavDropdown,
+} from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import userService from "../services/userService";
 import { useHistory } from "react-router-dom";
@@ -16,6 +23,14 @@ const Header = (props) => {
           <Nav className="mr-auto">
             <Nav.Link href="/formTwo">Baufinanzierung</Nav.Link>
             <Nav.Link href="/form1">Zahnzusatz</Nav.Link>
+            <NavDropdown title="Phone Numbers" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/phonenumberform2">
+                Baufinanzierung
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/phonenumberform">
+                Zahnzusatz
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           <Form inline>
             <Button

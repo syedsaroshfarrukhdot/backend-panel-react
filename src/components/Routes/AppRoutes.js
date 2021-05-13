@@ -1,7 +1,8 @@
 import React from "react";
 import Form from "../Form";
 import FormTwo from "../FormTwo";
-import FormThree from "../FormThree";
+import FormPhoneNumbers from "../FormPhoneNumbers";
+import Form2PhoneNumbers from "../Form2PhoneNumber";
 
 const AppRoutes = [
   {
@@ -17,10 +18,16 @@ const AppRoutes = [
     name: "formTwo",
   },
   {
-    path: "/FormThree",
-    component: FormThree,
+    path: "/phonenumberform",
+    component: FormPhoneNumbers,
     exact: true,
-    name: "formthree",
+    name: "formPhoneNumber",
+  },
+  {
+    path: "/phonenumberform2",
+    component: Form2PhoneNumbers,
+    exact: true,
+    name: "formPhoneNumber",
   },
 ];
 

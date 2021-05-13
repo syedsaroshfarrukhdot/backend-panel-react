@@ -24,13 +24,13 @@ const useSortableData = (items, config = null) => {
   }, [items, sortConfig]);
 
   const requestSort = (key) => {
-    let direction = "ascending";
+    let direction = "descending";
     if (
       sortConfig &&
       sortConfig.key === key &&
-      sortConfig.direction === "ascending"
+      sortConfig.direction === "descending"
     ) {
-      direction = "descending";
+      direction = "ascending";
     }
     setSortConfig({ key, direction });
   };
@@ -49,6 +49,11 @@ const ProductTable = (props) => {
     }
     return sortConfig.key === name ? sortConfig.direction : undefined;
   };
+  useEffect(() => {
+    requestSort("createdAt");
+    // GET request using axios inside useEffect React hook
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
   return (
     <table>
       <thead>
@@ -60,6 +65,24 @@ const ProductTable = (props) => {
               className={getClassNamesFor("createdAt")}
             >
               Date
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("firstName")}
+              className={getClassNamesFor("firstName")}
+            >
+              First Name
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("lastName")}
+              className={getClassNamesFor("lastName")}
+            >
+              Last Name
             </button>
           </th>
           <th>
@@ -89,24 +112,7 @@ const ProductTable = (props) => {
               Year
             </button>
           </th>
-          <th>
-            <button
-              type="button"
-              onClick={() => requestSort("firstName")}
-              className={getClassNamesFor("firstName")}
-            >
-              First Name
-            </button>
-          </th>
-          <th>
-            <button
-              type="button"
-              onClick={() => requestSort("lastName")}
-              className={getClassNamesFor("lastName")}
-            >
-              Last Name
-            </button>
-          </th>
+
           <th>
             <button
               type="button"
@@ -234,10 +240,16 @@ const ProductTable = (props) => {
             </button>
           </th>
           <th>
-            <button type="button">Note</button>
+            <button type="button">Varlauf</button>
           </th>
           <th>
-            <button type="button">Ja/Nein</button>
+            <button
+              type="button"
+              onClick={() => requestSort("Option")}
+              className={getClassNamesFor("Option")}
+            >
+              Ja/Nein
+            </button>
           </th>
         </tr>
       </thead>
@@ -245,11 +257,11 @@ const ProductTable = (props) => {
         {items.map((item) => (
           <tr key={item._id}>
             <td>{moment(item.createdAt).format("DD/MM/YYYY")}</td>
+            <td>{item.firstName}</td>
+            <td>{item.lastName}</td>
             <td>{item.Day}</td>
             <td>{item.Month}</td>
             <td>{item.Year}</td>
-            <td>{item.firstName}</td>
-            <td>{item.lastName}</td>
             <td>{item.email}</td>
             <td>{item.StepTwo}</td>
             <td>{item.StepThree}</td>

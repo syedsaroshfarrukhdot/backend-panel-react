@@ -24,13 +24,13 @@ const useSortableData = (items, config = null) => {
   }, [items, sortConfig]);
 
   const requestSort = (key) => {
-    let direction = "ascending";
+    let direction = "descending";
     if (
       sortConfig &&
       sortConfig.key === key &&
-      sortConfig.direction === "ascending"
+      sortConfig.direction === "descending"
     ) {
-      direction = "descending";
+      direction = "ascending";
     }
     setSortConfig({ key, direction });
   };
@@ -49,6 +49,11 @@ const ProductTable = (props) => {
     }
     return sortConfig.key === name ? sortConfig.direction : undefined;
   };
+  useEffect(() => {
+    requestSort("createdAt");
+    // GET request using axios inside useEffect React hook
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
   return (
     <table>
       <thead>
@@ -189,10 +194,16 @@ const ProductTable = (props) => {
             </button>
           </th>
           <th>
-            <button type="button">Note</button>
+            <button type="button">Verlauf</button>
           </th>
           <th>
-            <button type="button">Option</button>
+            <button
+              type="button"
+              onClick={() => requestSort("Option")}
+              className={getClassNamesFor("Option")}
+            >
+              Ja/Nein
+            </button>
           </th>
         </tr>
       </thead>
