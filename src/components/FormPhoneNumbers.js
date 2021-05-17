@@ -4,6 +4,7 @@ import axios from "axios";
 import moment from "moment";
 import Auth from "./Auth";
 import { withRouter } from "react-router";
+import { Button, Modal, Form } from "react-bootstrap";
 
 const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config);
@@ -39,6 +40,58 @@ const useSortableData = (items, config = null) => {
   return { items: sortedItems, requestSort, sortConfig };
 };
 
+const ModalPage = (props) => {
+  const [show, setShow] = React.useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Load Data
+      </Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="text" defaultValue={props.Email} />
+            <Form.Label>Day</Form.Label>
+            <Form.Control type="text" defaultValue={props.Day} />
+            <Form.Label>Month</Form.Label>
+            <Form.Control type="text" defaultValue={props.Month} />
+            <Form.Label>Year</Form.Label>
+            <Form.Control type="text" defaultValue={props.Year} />
+            <Form.Label>StepFour</Form.Label>
+            <Form.Control type="text" defaultValue={props.StepFour} />
+            <Form.Label>StepFive</Form.Label>
+            <Form.Control type="text" defaultValue={props.StepFive} />
+            <Form.Label>StepSix</Form.Label>
+            <Form.Control type="text" defaultValue={props.StepSix} />
+            <Form.Label>StepSeven</Form.Label>
+            <Form.Control type="text" defaultValue={props.StepSeven} />
+            <Form.Label>StepEight</Form.Label>
+            <Form.Control type="text" defaultValue={props.StepEight} />
+            <Form.Label>PLZ</Form.Label>
+            <Form.Control type="text" defaultValue={props.PLZ} />
+            <Form.Label>ORT</Form.Label>
+            <Form.Control type="text" defaultValue={props.ORT} />
+            <Form.Label>Straße</Form.Label>
+            <Form.Control type="text" defaultValue={props.Straße} />
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+
 const ProductTable = (props) => {
   const { items, requestSort, sortConfig } = useSortableData(props.products);
   const [input, setInput] = React.useState("");
@@ -55,6 +108,7 @@ const ProductTable = (props) => {
     // GET request using axios inside useEffect React hook
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
+
   return (
     <table>
       <thead>
@@ -86,6 +140,15 @@ const ProductTable = (props) => {
               Ja/Nein
             </button>
           </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("")}
+              className={getClassNamesFor("")}
+            >
+              Show Data
+            </button>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -112,6 +175,25 @@ const ProductTable = (props) => {
               >
                 Save
               </button>
+            </td>
+            <td>
+              <ModalPage
+                Telefon={item.Telefon}
+                Email={item.Email}
+                Day={item.Day}
+                Month={item.Month}
+                Year={item.Year}
+                StepFour={item.StepFour}
+                StepFive={item.StepFive}
+                StepSix={item.StepSix}
+                StepSeven={item.StepSeven}
+                StepEight={item.StepEight}
+                PLZ={item.PLZ}
+                ORT={item.ORT}
+                PLZ={item.PLZ}
+                Straße={item.Straße}
+                Nachname={item.Nachname}
+              />
             </td>
           </tr>
         ))}
