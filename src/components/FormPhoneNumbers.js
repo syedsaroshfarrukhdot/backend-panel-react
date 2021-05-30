@@ -167,7 +167,7 @@ const ProductTable = (props) => {
                 type="submit"
                 onClick={async () => {
                   await axios.put(
-                    `https://new-backend-api.herokuapp.com/zinking/create-form-edit/${item._id}`,
+                    `https://eigenheim-backend.herokuapp.com/zinking/create-form-edit/${item._id}`,
                     { Option: option }
                   );
                   console.log(option);
@@ -213,7 +213,7 @@ export default function FormPhoneNumbers() {
   useEffect(() => {
     // GET request using axios inside useEffect React hook
     let data = axios
-      .get("https://new-backend-api.herokuapp.com/zinking/get-data")
+      .get("https://eigenheim-backend.herokuapp.com/zinking/get-data")
       .then((response) => setFormData(response.data));
     console.log(formData);
 

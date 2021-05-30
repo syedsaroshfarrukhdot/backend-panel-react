@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import "./form.css";
+import "../form.css";
 import axios from "axios";
 import moment from "moment";
-import Auth from "./Auth";
+import Auth from "../Auth";
 
 const useSortableData = (items, config = null) => {
   const [sortConfig, setSortConfig] = React.useState(config);
@@ -70,28 +70,19 @@ const ProductTable = (props) => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort("Day")}
-              className={getClassNamesFor("Day")}
+              onClick={() => requestSort("Nachname")}
+              className={getClassNamesFor("Nachname")}
             >
-              Day
+              Nachname
             </button>
           </th>
           <th>
             <button
               type="button"
-              onClick={() => requestSort("Month")}
-              className={getClassNamesFor("Month")}
+              onClick={() => requestSort("Vorname")}
+              className={getClassNamesFor("Vorname")}
             >
-              Month
-            </button>
-          </th>
-          <th>
-            <button
-              type="button"
-              onClick={() => requestSort("Year")}
-              className={getClassNamesFor("Year")}
-            >
-              Year
+              Vorname
             </button>
           </th>
           <th>
@@ -101,6 +92,42 @@ const ProductTable = (props) => {
               className={getClassNamesFor("Email")}
             >
               Email
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("Phone")}
+              className={getClassNamesFor("Phone")}
+            >
+              Phone
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("StepOne")}
+              className={getClassNamesFor("StepOne")}
+            >
+              StepOne
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("StepTwo")}
+              className={getClassNamesFor("StepTwo")}
+            >
+              StepTwo
+            </button>
+          </th>
+          <th>
+            <button
+              type="button"
+              onClick={() => requestSort("StepThree")}
+              className={getClassNamesFor("StepThree")}
+            >
+              StepThree
             </button>
           </th>
           <th>
@@ -151,46 +178,19 @@ const ProductTable = (props) => {
           <th>
             <button
               type="button"
-              onClick={() => requestSort("PLZ")}
-              className={getClassNamesFor("PLZ")}
+              onClick={() => requestSort("StepNine")}
+              className={getClassNamesFor("StepNine")}
             >
-              PLZ
+              StepNine
             </button>
           </th>
           <th>
             <button
               type="button"
-              onClick={() => requestSort("ORT")}
-              className={getClassNamesFor("ORT")}
+              onClick={() => requestSort("StepTen")}
+              className={getClassNamesFor("StepTen")}
             >
-              ORT
-            </button>
-          </th>
-          <th>
-            <button
-              type="button"
-              onClick={() => requestSort("Straße")}
-              className={getClassNamesFor("Straße")}
-            >
-              Straße
-            </button>
-          </th>
-          <th>
-            <button
-              type="button"
-              onClick={() => requestSort("Nachname")}
-              className={getClassNamesFor("Nachname")}
-            >
-              Nachname
-            </button>
-          </th>
-          <th>
-            <button
-              type="button"
-              onClick={() => requestSort("Telefon")}
-              className={getClassNamesFor("Telefon")}
-            >
-              Telefon
+              StepTen
             </button>
           </th>
           <th>
@@ -211,20 +211,20 @@ const ProductTable = (props) => {
         {items.map((item) => (
           <tr key={item._id}>
             <td>{moment(item.createdAt).format("DD/MM/YYYY")}</td>
-            <td>{item.Day}</td>
-            <td>{item.Month}</td>
-            <td>{item.Year}</td>
+            <td>{item.Nachname}</td>
+            <td>{item.Vorname}</td>
             <td>{item.Email}</td>
+            <td>{item.Phone}</td>
+            <td>{item.StepOne}</td>
+            <td>{item.StepTwo}</td>
+            <td>{item.StepThree}</td>
             <td>{item.StepFour}</td>
             <td>{item.StepFive}</td>
             <td>{item.StepSix}</td>
             <td>{item.StepSeven}</td>
             <td>{item.StepEight}</td>
-            <td>{item.PLZ}</td>
-            <td>{item.ORT}</td>
-            <td>{item.Straße}</td>
-            <td>{item.Nachname}</td>
-            <td>{item.Telefon}</td>
+            <td>{item.StepNine}</td>
+            <td>{item.StepTen}</td>
 
             <td>
               <input
@@ -237,7 +237,7 @@ const ProductTable = (props) => {
                 type="submit"
                 onClick={async () => {
                   await axios.put(
-                    `https://eigenheim-backend.herokuapp.com/zinking/create-form-edit/${item._id}`,
+                    `https://eigenheim-backend.herokuapp.com/mcmakler/create-form-edit/${item._id}`,
                     { Note: input }
                   );
                   console.log(input);
@@ -257,7 +257,7 @@ const ProductTable = (props) => {
                 type="submit"
                 onClick={async () => {
                   await axios.put(
-                    `https://eigenheim-backend.herokuapp.com/zinking/create-form-edit/${item._id}`,
+                    `https://eigenheim-backend.herokuapp.com/mcmakler/create-form-edit/${item._id}`,
                     { Option: option }
                   );
                   console.log(option);
@@ -284,7 +284,7 @@ export default function Form() {
   useEffect(() => {
     // GET request using axios inside useEffect React hook
     let data = axios
-      .get("https://eigenheim-backend.herokuapp.com/zinking/get-data")
+      .get("https://eigenheim-backend.herokuapp.com/mcmakler/get-data")
       .then((response) => setFormData(response.data));
     console.log(formData);
 
@@ -293,7 +293,7 @@ export default function Form() {
   return (
     <Auth>
       <div className="App">
-        <h3 style={{ textAlign: "center" }}>Zahnzusatz</h3>
+        <h3 style={{ textAlign: "center" }}>McMakler</h3>
         <ProductTable products={formData} />
       </div>
     </Auth>

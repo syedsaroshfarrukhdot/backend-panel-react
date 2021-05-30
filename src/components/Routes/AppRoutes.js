@@ -3,6 +3,7 @@ import Form from "../Form";
 import FormTwo from "../FormTwo";
 import FormPhoneNumbers from "../FormPhoneNumbers";
 import Form2PhoneNumbers from "../Form2PhoneNumber";
+import McMakler from "../Pages/McMakler";
 
 const AppRoutes = [
   {
@@ -16,6 +17,12 @@ const AppRoutes = [
     component: FormTwo,
     exact: true,
     name: "formTwo",
+  },
+  {
+    path: "/mcmakler",
+    component: McMakler,
+    exact: true,
+    name: "mcmakler",
   },
   {
     path: "/phonenumberform",
