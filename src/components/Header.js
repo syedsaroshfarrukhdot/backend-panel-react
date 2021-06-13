@@ -24,6 +24,18 @@ const Header = (props) => {
             <Nav.Link href="/formTwo">Baufinanzierung</Nav.Link>
             <Nav.Link href="/form1">Zahnzusatz</Nav.Link>
             <Nav.Link href="/mcmakler">McMakler</Nav.Link>
+            <NavDropdown
+              title="Immobilie-Richtig-Verkaufen"
+              id="basic-nav-dropdown"
+            >
+              <NavDropdown.Item href="/gewerbe">Gewerbe</NavDropdown.Item>
+              <NavDropdown.Item href="/grundstuck">Grundstuck</NavDropdown.Item>
+              <NavDropdown.Item href="/haus">Haus</NavDropdown.Item>
+              <NavDropdown.Item href="/haus-mehrfamilienhausg">
+                Haus --> Mehrfamilienhausg
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/wohnung">Wohnung</NavDropdown.Item>
+            </NavDropdown>
             <NavDropdown title="Phone Numbers" id="basic-nav-dropdown">
               <NavDropdown.Item href="/phonenumberform2">
                 Baufinanzierung
