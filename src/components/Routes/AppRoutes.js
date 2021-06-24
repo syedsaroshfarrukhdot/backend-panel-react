@@ -4,6 +4,7 @@ import FormTwo from "../FormTwo";
 import FormPhoneNumbers from "../FormPhoneNumbers";
 import Form2PhoneNumbers from "../Form2PhoneNumber";
 import McMakler from "../Pages/McMakler";
+import eco24 from "../Pages/eco24";
 import Gewerbe from "../Pages/immobilierichtigverkaufenModel/Gewerbe";
 import Grundstuck from "../Pages/immobilierichtigverkaufenModel/Grundstuck";
 import Haus from "../Pages/immobilierichtigverkaufenModel/Haus";
@@ -70,6 +71,12 @@ const AppRoutes = [
     component: Wohnung,
     exact: true,
     name: "wohnung",
+  },
+  {
+    path: "/eco24",
+    component: eco24,
+    exact: true,
+    name: "eco24",
   },
 ];
 
