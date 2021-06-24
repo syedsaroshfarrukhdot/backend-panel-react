@@ -273,7 +273,7 @@ export default function Form() {
   return (
     <Auth>
       <div className="App">
-        <h3 style={{ textAlign: "center" }}>McMakler</h3>
+        <h3 style={{ textAlign: "center" }}>Eco24</h3>
         <ProductTable products={formData} />
       </div>
     </Auth>
