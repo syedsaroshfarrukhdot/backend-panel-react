@@ -335,7 +335,7 @@ export default function FormTwo() {
   useEffect(() => {
     // GET request using axios inside useEffect React hook
     let data = axios
-      .get("https:/https://hausfrage-frontend-backend.herokuapp.com/")
+      .get("https://hausfrage-frontend-backend.herokuapp.com/")
       .then((response) => setFormData(response.data));
     console.log(formData);
 
