@@ -21,30 +21,7 @@ const Header = (props) => {
         <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="#home">Backend</Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link href="/formTwo">Baufinanzierung</Nav.Link>
-            <Nav.Link href="/form1">Zahnzusatz</Nav.Link>
-            <Nav.Link href="/mcmakler">McMakler</Nav.Link>
-            <Nav.Link href="/eco24">Eco24</Nav.Link>
-            <NavDropdown
-              title="Immobilie-Richtig-Verkaufen"
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item href="/gewerbe">Gewerbe</NavDropdown.Item>
-              <NavDropdown.Item href="/grundstuck">Grundstuck</NavDropdown.Item>
-              <NavDropdown.Item href="/haus">Haus</NavDropdown.Item>
-              <NavDropdown.Item href="/haus-mehrfamilienhausg">
-                Haus --> Mehrfamilienhausg
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/wohnung">Wohnung</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown title="Phone Numbers" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/phonenumberform2">
-                Baufinanzierung
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/phonenumberform">
-                Zahnzusatz
-              </NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="/formTwo">Hausfrage</Nav.Link>
           </Nav>
           <Form inline>
             <Button
