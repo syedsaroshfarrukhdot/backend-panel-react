@@ -10,7 +10,7 @@ class userServices {
   login = (email, password) =>
     new Promise((resolve, reject) => {
       axios
-        .post("https://https://hausfrage-frontend-backend.herokuapp.com/users/login", {
+        .post("https://hausfrage-frontend-backend.herokuapp.com/users/login", {
           email,
           password,
         })
