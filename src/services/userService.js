@@ -10,10 +10,13 @@ class userServices {
   login = (email, password) =>
     new Promise((resolve, reject) => {
       axios
-        .post("https://hausfrage-frontend-backend.herokuapp.com/users/login", {
-          email,
-          password,
-        })
+        .post(
+          "https://hausfrage-backend-api-7oo6e.ondigitalocean.app/users/login",
+          {
+            email,
+            password,
+          }
+        )
         .then((token) => {
           localStorage.setItem("token", token.data);
           resolve(token);

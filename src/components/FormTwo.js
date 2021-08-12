@@ -288,7 +288,7 @@ const ProductTable = (props) => {
                 type="submit"
                 onClick={async () => {
                   await axios.put(
-                    `https://hausfrage-frontend-backend.herokuapp.com/create-form-edit/${item._id}`,
+                    `https://hausfrage-backend-api-7oo6e.ondigitalocean.app/create-form-edit/${item._id}`,
                     { Note: input }
                   );
                   console.log(input);
@@ -308,7 +308,7 @@ const ProductTable = (props) => {
                 type="submit"
                 onClick={async () => {
                   await axios.put(
-                    `https://hausfrage-frontend-backend.herokuapp.com/create-form-edit/${item._id}`,
+                    `https://hausfrage-backend-api-7oo6e.ondigitalocean.app/create-form-edit/${item._id}`,
                     { Option: option }
                   );
                   console.log(option);
@@ -335,7 +335,7 @@ export default function FormTwo() {
   useEffect(() => {
     // GET request using axios inside useEffect React hook
     let data = axios
-      .get("https://hausfrage-frontend-backend.herokuapp.com/")
+      .get("https://hausfrage-backend-api-7oo6e.ondigitalocean.app/")
       .then((response) => setFormData(response.data));
     console.log(formData);
 
